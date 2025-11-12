@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView, FlatList } from 'react-native';
+import { View, Text, Image, ScrollView, FlatList, TextInput } from 'react-native';
 
 const App = () => {
   return (
@@ -17,11 +17,16 @@ const App = () => {
       data={[{ key: 'Arroz' }, { key: 'Feijão' }, { key: 'Açucar' }]}
       renderItem={({ item }) => <Text>{item.key}</Text>}/>
 
-      
-      <Image
-        source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png' }}
-        style={{ width: 400, height: 390, marginTop: 100 }}
+
+      <TextInput
+        placeholder="Digite seu nome"
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200, marginTop: 20, paddingLeft: 10 }}
       />
+
+      <View style={{ marginTop: 20 }}>
+      <Button title="Cadastrar" onPress={() => alert('Cadastro concluído com sucesso!')} /> 
+      </View>
+
     </View>
     </ScrollView>
   );
