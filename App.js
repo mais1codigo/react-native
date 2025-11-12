@@ -1,35 +1,33 @@
-import React from "react";
-import { View, Text, Image, ScrollView, FlatList, TextInput, Button } from 'react-native';
+import React, { Component } from "react";
+import { Text, View, Button } from "react-native";
 
-const App = () => {
-  return (
-    <ScrollView>
-    <View style={{ alignItems:"center" }}>
-      <Text style={{ fontSize: 25, color: 'blue', textAlign: "center" }}>
-        Olá, tudo bem?
-      </Text>
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-      <Image
-        source={require('./src/barco.png')}
-        style={{ width: 300, height: 300 }}
-      />
-      <FlatList
-      data={[{ key: 'Arroz' }, { key: 'Feijão' }, { key: 'Açucar' }]}
-      renderItem={({ item }) => <Text>{item.key}</Text>}/>
+    this.state = {
+      nome: 'João Victor Gomes'
+    };
 
+    this.entrar = this.entrar.bind(this); // Corrigi aqui
+  }
 
-      <TextInput
-        placeholder="Digite seu nome"
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200, marginTop: 20, paddingLeft: 10 }}
-      />
+  entrar() {
+    this.setState({
+      nome: 'Leandro'
+    });
+  }
 
-      <View style={{ marginTop: 20 }}>
-      <Button title="Cadastrar" onPress={() => alert('Cadastro concluído com sucesso!')} /> 
+  render() {
+    return (
+      <View style={{ marginTop: 30 }}>
+        <Button title="Entrar" onPress={this.entrar} />
+        <Text style={{ fontSize: 30, color: 'blue', textAlign: "center" }}>
+          {this.state.nome}
+        </Text>
       </View>
-
-    </View>
-    </ScrollView>
-  );
-};
+    );
+  }
+}
 
 export default App;
